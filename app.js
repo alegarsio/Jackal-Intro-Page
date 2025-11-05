@@ -1,4 +1,3 @@
-// app.js
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -18,7 +17,6 @@ const jackalData = {
         { title: "Pattern Matching", desc: "Elegant conditional branching for complex logic." },
         { title: "C-Based Interpreter", desc: "Built from scratch in C for performance and educational depth." }
     ],
-    // DATA BARU: Release Notes
     releases: [
         {
             version: "0.1.0-beta",
@@ -34,7 +32,6 @@ const jackalData = {
                 { type: "New", text: "Standard I/O functions: print() and read()." }
             ]
         }
-       
     ],
     repoLink: "https://github.com/alegarsio/Jackal-Projects"
 };
@@ -43,6 +40,10 @@ app.get('/', (req, res) => {
     res.render('index', { data: jackalData });
 });
 
-app.listen(port, () => {
-    console.log(`Jackal landing page running at http://localhost:${port}`);
-});
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Jackal landing page running locally at http://localhost:${port}`);
+    });
+}
+
+module.exports = app;

@@ -1,0 +1,71 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+.env.production
+
+# parcel-bundler cache (jika nanti pakai parcel)
+.cache
+dist/
+
+# Next.js build output (jika nanti migrasi ke Next.js)
+.next/
+out/
+
+# Nuxt.js build / generate output (jika nanti migrasi ke Nuxt.js)
+.nuxt/
+dist/
+
+# Gatsby files (jika nanti migrasi ke Gatsby)
+.cache/
+# public
+
+# Vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode settings
+.vscode-test/
+# .vscode/
+
+# macOS metadata files
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
