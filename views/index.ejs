@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= data.name %> - <%= data.motto %></title>
+    <title><%= data.name %> v<%= data.latestRelease.version %> - <%= data.motto %></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,22 +32,56 @@
             <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-8 gradient-text">
                 <%= data.name %>.
             </h1>
-            <div class="inline-block bg-black bg-opacity-5 backdrop-blur-sm px-4 py-2 text-sm mb-8 tracking-wide">
-                Latest: v<%= data.releases[0].version %>
+            
+            <div class="flex flex-wrap items-center gap-4 mb-8">
+                <div class="inline-block bg-black bg-opacity-5 backdrop-blur-sm px-4 py-2 text-sm tracking-wide font-medium">
+                    v<%= data.latestRelease.version %>
+                </div>
             </div>
-            <p class="text-xl md:text-2xl text-neutral-700 max-w-2xl leading-relaxed mb-12">
+
+            <p class="text-xl md:text-2xl text-neutral-700 max-w-2xl leading-relaxed mb-10">
                 <%= data.description %>
             </p>
-            <div class="flex flex-wrap gap-6">
-                <a href="#quick-start" class="bg-black text-white px-8 py-3 hover:bg-neutral-800 transition-all duration-300 tracking-wide">
+
+            <div class="flex flex-wrap gap-4 sm:gap-6 mb-12">
+                <a href="#quick-start" class="bg-black text-white px-8 py-3 hover:bg-neutral-800 transition-all duration-300 tracking-wide font-medium">
                     Get Started
                 </a>
-                <a href="#documentation" class="border border-black px-8 py-3 hover:bg-black hover:text-white transition-all duration-300 tracking-wide">
+                <a href="#documentation" class="border border-neutral-300 px-8 py-3 hover:border-black hover:bg-black hover:text-white transition-all duration-300 tracking-wide font-medium">
                     Documentation
                 </a>
-                <a href="<%= data.repoLink %>" target="_blank" class="text-neutral-500 px-8 py-3 hover:text-black transition-all duration-300 tracking-wide flex items-center">
-                    GitHub ->
+                <a href="<%= data.repoLink %>" target="_blank" class="group flex items-center gap-2 text-neutral-600 px-4 py-3 hover:text-black transition-all duration-300 tracking-wide">
+                    GitHub Repository
+                    <span class="group-hover:translate-x-1 transition-transform duration-300">-></span>
                 </a>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center gap-6 text-sm font-medium text-neutral-500 pt-6 border-t border-neutral-100 max-w-xl">
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2">
+                        <span class="text-amber-400 text-lg leading-none">★</span>
+                        <span><%= data.repoStats.stars %> stars</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-neutral-400 text-lg leading-none">⑂</span>
+                        <span><%= data.repoStats.forks %> forks</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-1 bg-neutral-100 rounded-sm text-xs uppercase tracking-wider">
+                        <span>⚖ <%= data.repoStats.license %></span>
+                    </div>
+                </div>
+
+                <% if (data.lastCommit && data.lastCommit.url) { %>
+                 <a href="<%= data.lastCommit.url %>" target="_blank" class="flex items-center gap-2 pl-0 sm:pl-6 sm:border-l sm:border-neutral-200 hover:text-black transition-colors group truncate">
+                    <span class="relative flex h-2 w-2 shrink-0">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="truncate">
+                        Latest activity: <span class="text-neutral-700 group-hover:underline"><%= data.lastCommit.date %></span>
+                    </span>
+                </a>
+                <% } %>
             </div>
         </div>
     </header>
@@ -154,30 +188,38 @@ jack.greet();</pre>
 
     <section id="releases" class="py-32 px-6 md:px-24 lg:px-32">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl tracking-tight mb-20 text-center gradient-text">Release Notes<span class="text-neutral-300">.</span></h2>
-            <div class="space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-transparent before:via-neutral-200 before:to-transparent">
-                <% data.releases.forEach(release => { %>
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div class="flex items-center justify-center w-3 h-3 rounded-full bg-neutral-200 group-hover:bg-black transition-colors duration-300 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2"></div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-neutral-100">
-                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-                                <h3 class="text-xl tracking-tight">v<%= release.version %></h3>
-                                <time class="text-xs text-neutral-400 uppercase tracking-wider"><%= release.date %></time>
-                            </div>
-                            <div class="mb-6"><span class="inline-block bg-black bg-opacity-5 text-xs px-3 py-1.5 uppercase tracking-wider"><%= release.label %></span></div>
-                            <p class="text-neutral-600 mb-8 text-sm leading-relaxed"><%= release.highlights %></p>
-                            <ul class="space-y-3">
-                                <% release.changes.forEach(change => { %>
-                                    <li class="text-sm text-neutral-500 flex items-start group">
-                                        <span class="text-[10px] mr-3 px-2 py-1 bg-neutral-50 text-neutral-400 uppercase tracking-wider min-w-[50px] text-center shrink-0 group-hover:bg-black group-hover:text-white transition-colors duration-300"><%= change.type %></span>
-                                        <span class="pt-0.5"><%= change.text %></span>
-                                    </li>
-                                <% }) %>
-                            </ul>
-                        </div>
-                    </div>
-                <% }) %>
+            <h2 class="text-4xl tracking-tight mb-20 text-center gradient-text">Latest Release<span class="text-neutral-300">.</span></h2>
+
+            <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 bg-white p-8 shadow-sm border border-neutral-100">
+                <div class="md:w-1/4 md:text-right md:pr-8 md:border-r md:border-neutral-100">
+                    <h3 class="text-3xl tracking-tight font-bold mb-2">v<%= data.latestRelease.version %></h3>
+                    <time class="text-sm text-neutral-400 uppercase tracking-wider block mb-4"><%= data.latestRelease.date %></time>
+                    <span class="inline-block bg-black text-white text-xs px-3 py-1 uppercase tracking-wider font-bold"><%= data.latestRelease.label %></span>
+                </div>
+                
+                <div class="md:w-3/4">
+                    <p class="text-neutral-700 font-medium mb-6 text-lg leading-relaxed">
+                        <%= data.latestRelease.highlights %>
+                    </p>
+                    <ul class="grid grid-cols-1 gap-3">
+                        <% data.latestRelease.changes.forEach(change => { %>
+                            <li class="text-sm text-neutral-600 flex items-start p-3 bg-neutral-50 rounded-sm border border-neutral-100">
+                                <span class="text-[10px] mr-3 px-2 py-1 bg-white border border-neutral-200 text-neutral-500 uppercase tracking-wider font-bold shrink-0 min-w-[60px] text-center">
+                                    <%= change.type %>
+                                </span>
+                                <span class="font-medium"><%= change.text %></span>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </div>
             </div>
+
+            <div class="text-center mt-12">
+                <a href="<%= data.repoLink %>/releases" target="_blank" class="text-neutral-500 hover:text-black underline underline-offset-4 transition-colors text-sm tracking-wide font-medium">
+                    View all previous releases on GitHub ->
+                </a>
+            </div>
+
         </div>
     </section>
 
