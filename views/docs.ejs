@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - <%= data.name %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        pre { @apply bg-neutral-50 p-4 rounded-sm border border-neutral-200 overflow-x-auto text-sm font-mono mb-6; }
+        code { @apply font-mono text-sm bg-neutral-100 px-1 rounded-sm; }
+        h2 { @apply text-2xl font-bold mt-12 mb-6 tracking-tight; }
+        h3 { @apply text-xl font-bold mt-8 mb-4 tracking-tight; }
+        p { @apply mb-4 leading-relaxed text-neutral-700; }
+    </style>
+</head>
+<body class="bg-white text-neutral-900 antialiased">
+
+    <nav class="flex items-center justify-between px-6 md:px-12 h-16 border-b border-neutral-200 fixed top-0 w-full bg-white z-50">
+        <a href="/" class="font-bold text-xl tracking-tight"><%= data.name %> Docs<span class="text-neutral-400">.</span></a>
+        <a href="/" class="text-sm text-neutral-500 hover:text-black transition-colors">← Back to Home</a>
+    </nav>
+
+    <div class="flex pt-16 min-h-screen">
+        <aside class="w-64 border-r border-neutral-200 hidden md:block fixed h-full overflow-y-auto p-6 lg:p-8 bg-neutral-50/50">
+            <div class="mb-8">
+                <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Getting Started</h4>
+                <ul class="space-y-2">
+                    <li><a href="#installation" class="block text-neutral-600 hover:text-black text-sm py-1">Installation</a></li>
+                    <li><a href="#hello-world" class="block text-neutral-600 hover:text-black text-sm py-1">Hello World</a></li>
+                    <li><a href="#class" class="block text-neutral-600 hover:text-black text-sm py-1">Class & Object</a></li>
+                    <li><a href="#user-input" class="block text-neutral-600 hover:text-black text-sm py-1">User Input</a></li>
+                    <li><a href="#pattern-matching" class="block text-neutral-600 hover:text-black text-sm py-1">Pattern Matching</a></li>
+                </ul>
+            </div>
+            <div class="mb-8">
+                <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Data Structures</h4>
+                <ul class="space-y-2">
+                    <li><a href="#arrays" class="block font-bold text-black text-sm py-1 border-l-2 border-black pl-3 -ml-3">Arrays</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="flex-1 md:ml-64 p-6 md:p-12 lg:p-16 max-w-4xl">
+            
+            <!-- Installation -->
+            <section id="installation">
+                <h1 class="text-5xl font-bold tracking-tight mb-6">Installation</h1>
+                <p class="text-xl text-neutral-600 mb-10">
+                    Jackal requires a standard C compiler and <code>make</code> to build the interpreter.
+                </p>
+
+                <h3>Prerequisites</h3>
+                <ul class="list-disc list-inside text-neutral-700 mb-6">
+                    <li><code>gcc</code> or <code>clang</code></li>
+                    <li><code>make</code></li>
+                </ul>
+
+                <h3>Build Instructions</h3>
+                <pre>git clone https://github.com/alegarsio/Jackal-Projects
+cd jackal
+make jackal</pre>
+
+                <h3>Running a Program</h3>
+                <pre>./jackal your_script.jackal</pre>
+            </section>
+
+            <hr class="my-12 border-neutral-200">
+
+            <!-- Hello World -->
+            <section id="hello-world">
+                <h1 class="text-5xl font-bold tracking-tight mb-6">Hello World</h1>
+                <p>To create your first program, write this in a <code>.jackal</code> file:</p>
+                <pre><span class="text-purple-600 font-bold">print</span> "Hello, world!";</pre>
+            </section>
+
+            <hr class="my-12 border-neutral-200">
+
+            <!-- Class and Object -->
+            <section id="class">
+                <h1 class="text-5xl font-bold tracking-tight mb-6">Class & Object</h1>
+                <p>Jackal is a fully object-oriented language with support for <code>class</code>, <code>this</code>, and constructors via <code>init</code>.</p>
+                <pre><span class="text-blue-600 font-bold">class</span> Jack {
+    <span class="text-blue-600 font-bold">function</span> init(name) {
+        <span class="text-blue-600 font-bold">this</span>.name = name;
+    }
+
+    <span class="text-blue-600 font-bold">function</span> greet() {
+        <span class="text-purple-600 font-bold">print</span> "Hello " + <span class="text-blue-600 font-bold">this</span>.name;
+    }
+}
+
+<span class="text-blue-600 font-bold">let</span> jack = Jack("Jack");
+jack.greet();</pre>
+                <p>This creates a class <code>Jack</code>, initializes it with a name, and calls the <code>greet()</code> method.</p>
+            </section>
+
+            <hr class="my-12 border-neutral-200">
+
+            <!-- Arrays -->
+            <section id="arrays">
+                <h1 class="text-5xl font-bold tracking-tight mb-6">Arrays</h1>
+                <p class="text-xl text-neutral-600 mb-10">
+                    Arrays in Jackal are ordered, indexable collections of data. They can hold mixed types and are dynamic.
+                </p>
+
+                <hr class="my-12 border-neutral-200">
+
+                <h3>Declaration</h3>
+                <p>Create arrays using square brackets <code>[]</code>.</p>
+                <pre><span class="text-blue-600 font-bold">let</span> numbers = [<span class="text-orange-600">1</span>, <span class="text-orange-600">2</span>, <span class="text-orange-600">3</span>, <span class="text-orange-600">4</span>, <span class="text-orange-600">5</span>];
+<span class="text-blue-600 font-bold">let</span> mixed = [<span class="text-orange-600">1</span>, <span class="text-green-600">"hello"</span>, <span class="text-blue-600 font-bold">true</span>, <span class="text-purple-600 font-bold">nil</span>];</pre>
+
+                <pre><span class="text-blue-600 font-bold">let</span> fruits = [<span class="text-green-600">"apple"</span>, <span class="text-green-600">"banana"</span>];
+<span class="text-purple-600 font-bold">print</span> fruits[<span class="text-orange-600">0</span>]; <span class="text-neutral-400">// Output: apple</span></pre>
+
+                <h3>Modifying Elements</h3>
+                <p>Reassign values at a specific index.</p>
+                <pre><span class="text-blue-600 font-bold">let</span> data = [<span class="text-orange-600">10</span>, <span class="text-orange-600">20</span>];
+data[<span class="text-orange-600">1</span>] = <span class="text-orange-600">99</span>;
+<span class="text-purple-600 font-bold">print</span> data; <span class="text-neutral-400">// Output: [10, 99]</span></pre>
+
+                <h3>Iteration</h3>
+                <p>Loop through an array using a standard <code>for</code> loop.</p>
+                <pre><span class="text-blue-600 font-bold">for</span> (<span class="text-blue-600 font-bold">let</span> i = <span class="text-orange-600">0</span>; i < <span class="text-orange-600">4</span>; i++) {
+    <span class="text-purple-600 font-bold">print</span> data[i];
+}</pre>
+
+                <h3>Built-in Functions</h3>
+                <p>Jackal provides built-in functions for array manipulation.</p>
+
+                <div class="space-y-8 mt-8">
+                    <div>
+                        <h4 class="text-lg font-bold mb-2 font-mono">push(array, element)</h4>
+                        <p class="text-sm text-neutral-600 mb-3">Adds a new element to the end.</p>
+                        <pre><span class="text-blue-600 font-bold">let</span> arr = [<span class="text-orange-600">10</span>, <span class="text-orange-600">20</span>];
+<span class="text-purple-600 font-bold">push</span>(arr, <span class="text-orange-600">30</span>);
+<span class="text-purple-600 font-bold">print</span> arr; <span class="text-neutral-400">// [10, 20, 30]</span></pre>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-bold mb-2 font-mono">pop(array)</h4>
+                        <p class="text-sm text-neutral-600 mb-3">Removes and returns the last element.</p>
+                        <pre><span class="text-blue-600 font-bold">let</span> stack = [<span class="text-orange-600">10</span>, <span class="text-orange-600">20</span>];
+<span class="text-purple-600 font-bold">print</span> <span class="text-purple-600 font-bold">pop</span>(stack); <span class="text-neutral-400">// 20</span>
+<span class="text-purple-600 font-bold">print</span> stack;      <span class="text-neutral-400">// [10]</span></pre>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-bold mb-2 font-mono">remove(array, index)</h4>
+                        <p class="text-sm text-neutral-600 mb-3">Removes element at specific index.</p>
+                        <pre><span class="text-blue-600 font-bold">let</span> list = [<span class="text-green-600">"a"</span>, <span class="text-green-600">"b"</span>, <span class="text-green-600">"c"</span>];
+<span class="text-purple-600 font-bold">remove</span>(list, <span class="text-orange-600">1</span>);
+<span class="text-purple-600 font-bold">print</span> list; <span class="text-neutral-400">// ["a", "c"]</span></pre>
+                    </div>
+                </div>
+
+            </section>
+
+            <hr class="my-12 border-neutral-200">
+
+            <!-- User Input -->
+            <section id="user-input">
+                <h1 class="text-5xl font-bold tracking-tight mb-6">User Input</h1>
+                <p>Use the <code>read()</code> function to take input from the user.</p>
+                <pre><span class="text-purple-600 font-bold">print</span> "Hello ";
+<span class="text-blue-600 font-bold">let</span> name = <span class="text-purple-600 font-bold">read</span>();
+<span class="text-purple-600 font-bold">print</span> "Hello, " + name + "!";</pre>
+            </section>
+
+            <hr class="my-12 border-neutral-200">
+
+            <!-- Pattern Matching -->
+            <section id="pattern-matching">
+                <h1 class="text-5xl font-bold tracking-tight mb-6">Pattern Matching</h1>
+                <p>Use <code>match</code> expressions for clear, declarative branching.</p>
+                <pre><span class="text-blue-600 font-bold">let</span> score = <span class="text-orange-600">90</span>;
+<span class="text-blue-600 font-bold">match</span> (score) {
+    <span class="text-orange-600">90</span> => <span class="text-purple-600 font-bold">print</span> "Passed";
+    <span class="text-orange-600">75</span> => <span class="text-purple-600 font-bold">print</span> "Ok";
+    <span class="text-blue-600 font-bold">default</span> => <span class="text-purple-600 font-bold">print</span> "Not in the list";
+}</pre>
+            </section>
+
+            <div class="mt-24 pt-12 border-t border-neutral-100 text-neutral-400 text-sm">
+                Caught a bug? <a href="<%= data.repoLink %>/issues" class="underline hover:text-black">Report on GitHub</a>.
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("main section[id]");
+            const navLinks = document.querySelectorAll("aside nav ul li a");
+
+            // Opsi untuk Intersection Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.2 // Bagian dianggap aktif jika 20% terlihat
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Hapus kelas aktif dari semua link
+                        navLinks.forEach((link) => {
+                            link.classList.remove("font-bold", "text-black", "border-l-2", "border-black", "pl-3", "-ml-3");
+                            link.classList.add("text-neutral-600");
+                        });
+
+                        // Tambah kelas aktif ke link yang sesuai
+                        const activeLink = document.querySelector(`aside nav ul li a[href="#${entry.target.id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add("font-bold", "text-black", "border-l-2", "border-black", "pl-3", "-ml-3");
+                            activeLink.classList.remove("text-neutral-600");
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Mulai observe semua section
+            sections.forEach((section) => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

@@ -126,6 +126,9 @@ app.get('/', async (req, res) => {
     const currentData = await fetchData();
     res.render('index', { data: currentData });
 });
+app.get('/docs', (req, res) => {
+    res.render('docs', { data: defaultData }); // Menggunakan defaultData sementara
+});
 
 if (require.main === module) {
     app.listen(port, () => {
