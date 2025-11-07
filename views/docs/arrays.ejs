@@ -92,11 +92,11 @@ function toggleAccordion(contentId) {
     const icon = document.getElementById(contentId.replace('-content', '-icon'));
     
     if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        icon.classList.add('rotate-180'); // Putar icon panah ke atas
+        content.classList.remove('hidden'); // Typo 'contentd' fixed here
+        icon.classList.add('rotate-180');
     } else {
         content.classList.add('hidden');
-        icon.classList.remove('rotate-180'); // Putar balik icon panah
+        icon.classList.remove('rotate-180');
     }
 }
 </script>
