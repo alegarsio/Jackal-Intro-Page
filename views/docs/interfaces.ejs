@@ -1,0 +1,49 @@
+<section id="interfaces" class="scroll-mt-24 mb-32">
+    <h1>Interfaces</h1>
+    <p class="text-xl text-neutral-600 mb-10">
+        Interfaces define a contract that classes can implement, ensuring they provide specific methods.
+    </p>
+
+    <h3>Defining an Interface</h3>
+    <p>Use the <code>interface</code> keyword to define a set of method signatures.</p>
+    
+    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-xl shadow-neutral-200/40 bg-white mb-8">
+        <div class="flex items-center h-10 px-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+            </div>
+            <div class="mx-auto text-xs font-mono text-neutral-500 font-medium tracking-wide">shape.jackal</div>
+        </div>
+        <pre class="!border-none !rounded-none !shadow-none !mb-0 !bg-white !text-neutral-800 p-6 text-[13.5px] leading-7"><code><span class="text-blue-600 font-bold">interface</span> <span class="text-yellow-600">Shape</span> {
+    <span class="text-purple-600 font-bold">function</span> <span class="text-blue-600">area</span>();
+}</code></pre>
+    </div>
+
+    <h3>Implementing an Interface</h3>
+    <p>Use the <code>implements</code> keyword to fulfill the contract.</p>
+    
+    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-xl shadow-neutral-200/40 bg-white mb-6">
+        <div class="flex items-center h-10 px-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+            </div>
+            <div class="mx-auto text-xs font-mono text-neutral-500 font-medium tracking-wide">square.jackal</div>
+        </div>
+        <pre class="!border-none !rounded-none !shadow-none !mb-0 !bg-white !text-neutral-800 p-6 text-[13.5px] leading-7"><code><span class="text-blue-600 font-bold">class</span> <span class="text-yellow-600">Square</span> <span class="text-purple-600 font-bold">implements</span> <span class="text-yellow-600">Shape</span> {
+    <span class="text-purple-600 font-bold">function</span> <span class="text-blue-600">init</span>(side) {
+        <span class="text-red-500">this</span>.side = side;
+    }
+
+    <span class="text-purple-600 font-bold">function</span> <span class="text-blue-600">area</span>() {
+        <span class="text-purple-600 font-bold">return</span> <span class="text-red-500">this</span>.side * <span class="text-red-500">this</span>.side;
+    }
+}
+
+<span class="text-blue-600 font-bold">let</span> sq = <span class="text-yellow-600">Square</span>(<span class="text-orange-600">5</span>);
+<span class="text-purple-600 font-bold">print</span> sq.<span class="text-blue-600">area</span>(); <span class="text-neutral-400 italic">// Output: 25</span></code></pre>
+    </div>
+</section>

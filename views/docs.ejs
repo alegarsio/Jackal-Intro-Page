@@ -68,6 +68,7 @@
                     <ul class="space-y-1 ml-0 list-none">
                         <li><a href="#classes" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Classes & Objects</a></li>
                         <li><a href="#inheritance" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Inheritance</a></li>
+                        <li><a href="#interfaces" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Interfaces</a></li>
                     </ul>
                 </div>
                 <div>
@@ -81,132 +82,15 @@
 
         <main class="flex-1 md:ml-64 p-6 md:p-12 lg:p-16 max-w-3xl mx-auto md:mx-0">
             
-            <section id="installation" class="scroll-mt-24 mb-24">
-                <h1>Installation</h1>
-                <p class="text-xl text-neutral-600 mb-8">Get Jackal running in minutes.</p>
-                <h3>Quick Setup</h3>
-                <pre><code>$ git clone <%= data.repoLink %>
-$ cd jackal
-$ make jackal
-$ ./jackal --version</code></pre>
-            </section>
-
-            <section id="hello-world" class="scroll-mt-24 mb-24">
-                <h1>Hello World</h1>
-                <pre><code><span class="f">print</span> <span class="s">"Hello, Jackal!"</span>;</code></pre>
-            </section>
-
-            <section id="functions" class="scroll-mt-24 mb-32">
-                <h1>Functions</h1>
-                <p class="text-xl text-neutral-600 mb-10">First-class citizens that can be assigned to variables and passed as arguments.</p>
-                <h3>Declaration</h3>
-                <pre><code><span class="k">function</span> <span class="f">greet</span>(name) {
-    <span class="k">return</span> <span class="s">"Hello, "</span> + name;
-}
-<span class="f">print</span> <span class="f">greet</span>(<span class="s">"Jackal"</span>);</code></pre>
-            </section>
-
-            <section id="user-input" class="scroll-mt-24 mb-32">
-                <h1>User Input</h1>
-                <p>Interactive programs using <code>read()</code>.</p>
-                <pre><code><span class="f">print</span> <span class="s">"Who are you? "</span>;
-<span class="k">let</span> name = <span class="f">read</span>();
-<span class="f">print</span> <span class="s">"Hi, "</span> + name + <span class="s">"!"</span>;</code></pre>
-            </section>
-
-            <section id="pattern-matching" class="scroll-mt-24 mb-32">
-                <h1>Pattern Matching</h1>
-                <p>Elegant conditional branching.</p>
-                <pre><code><span class="k">let</span> status = <span class="n">200</span>;
-<span class="k">match</span> (status) {
-    <span class="n">200</span> => <span class="f">print</span> <span class="s">"OK"</span>;
-    <span class="n">404</span> => <span class="f">print</span> <span class="s">"Not Found"</span>;
-    <span class="k">default</span> => <span class="f">print</span> <span class="s">"Unknown"</span>;
-}</code></pre>
-            </section>
-
-            <section id="classes" class="scroll-mt-24 mb-32">
-                <h1>Classes & Objects</h1>
-                <p class="text-xl text-neutral-600 mb-10">Blueprints for objects with state and behavior.</p>
-                <h3>Basic Class</h3>
-                <pre><code><span class="k">class</span> <span class="t">User</span> {
-    <span class="k">function</span> <span class="f">init</span>(username) {
-        <span class="k">this</span>.<span class="v">username</span> = username;
-    }
-
-    <span class="k">function</span> <span class="f">sayHi</span>() {
-        <span class="f">print</span> <span class="s">"Hi, I'm "</span> + <span class="k">this</span>.<span class="v">username</span>;
-    }
-}
-
-<span class="k">let</span> user = <span class="t">User</span>(<span class="s">"Ale"</span>);
-user.<span class="f">sayHi</span>();</code></pre>
-            </section>
-
-            <section id="inheritance" class="scroll-mt-24 mb-32">
-                <h1>Inheritance</h1>
-                <p class="text-xl text-neutral-600 mb-10">
-                    Classes can inherit from other classes using the <code>&lt;</code> symbol.
-                </p>
-                <h3>Extending Classes</h3>
-                <pre><code><span class="k">class</span> <span class="t">Language</span> {
-    <span class="k">function</span> <span class="f">init</span>(name) {
-        <span class="k">this</span>.<span class="v">name</span> = name;
-    }
-
-    <span class="k">function</span> <span class="f">compile</span>() {
-        <span class="f">print</span> <span class="k">this</span>.<span class="v">name</span> + <span class="s">" compiled"</span>;
-    }
-}
-
-<span class="k">class</span> <span class="t">Jackal</span> < <span class="t">Language</span> {
-    <span class="k">function</span> <span class="f">interpreted</span>() {
-        <span class="f">print</span> <span class="k">this</span>.<span class="v">name</span> + <span class="s">" interpreted"</span>;
-    }
-}
-
-<span class="k">let</span> jack = <span class="t">Jackal</span>(<span class="s">"jackal"</span>);
-jack.<span class="f">interpreted</span>(); <span class="c">// jackal interpreted</span>
-jack.<span class="f">compile</span>();     <span class="c">// jackal compiled</span></code></pre>
-            </section>
-
-            <section id="arrays" class="scroll-mt-24 mb-32">
-                <h1>Arrays</h1>
-                <p class="text-xl text-neutral-600 mb-10">Dynamic, ordered collections of data.</p>
-                
-                <h3>Basic Usage</h3>
-                <pre><code><span class="k">let</span> list = [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>];
-<span class="f">print</span> list[<span class="n">0</span>]; <span class="c">// 10</span>
-list[<span class="n">1</span>] = <span class="n">99</span>;
-<span class="f">print</span> list;    <span class="c">// [10, 99, 30]</span></code></pre>
-
-                <h3>Built-in Functions</h3>
-                <div class="space-y-8 mt-8">
-                    <div>
-                        <h4 class="text-lg font-bold mb-2 font-mono">push(array, element)</h4>
-                        <p class="text-sm text-neutral-600 mb-3">Adds a new element to the end.</p>
-                        <pre class="mb-0"><code><span class="k">let</span> arr = [<span class="n">10</span>];
-<span class="f">push</span>(arr, <span class="n">20</span>);
-<span class="f">print</span> arr; <span class="c">// [10, 20]</span></code></pre>
-                    </div>
-
-                    <div>
-                        <h4 class="text-lg font-bold mb-2 font-mono">pop(array)</h4>
-                        <p class="text-sm text-neutral-600 mb-3">Removes and returns the last element.</p>
-                        <pre class="mb-0"><code><span class="k">let</span> stack = [<span class="n">10</span>, <span class="n">20</span>];
-<span class="f">print</span> <span class="f">pop</span>(stack); <span class="c">// 20</span>
-<span class="f">print</span> stack;      <span class="c">// [10]</span></code></pre>
-                    </div>
-
-                    <div>
-                        <h4 class="text-lg font-bold mb-2 font-mono">remove(array, index)</h4>
-                        <p class="text-sm text-neutral-600 mb-3">Removes element at specific index.</p>
-                        <pre class="mb-0"><code><span class="k">let</span> list = [<span class="s">"a"</span>, <span class="s">"b"</span>, <span class="s">"c"</span>];
-<span class="f">remove</span>(list, <span class="n">1</span>);
-<span class="f">print</span> list; <span class="c">// ["a", "c"]</span></code></pre>
-                    </div>
-                </div>
-            </section>
+            <%- include('docs/installation') %>
+            <%- include('docs/hello-world') %>
+            <%- include('docs/functions') %>
+            <%- include('docs/user-input') %>
+            <%- include('docs/pattern-matching') %>
+            <%- include('docs/classes') %>
+            <%- include('docs/inheritance') %>
+            <%- include('docs/interfaces') %>
+            <%- include('docs/arrays') %>
 
             <div class="pt-8 mt-16 border-t border-neutral-100 text-neutral-500 text-sm flex justify-between items-center">
                 <p class="mb-0">© <%= new Date().getFullYear() %> Jackal Language.</p>
@@ -215,6 +99,40 @@ list[<span class="n">1</span>] = <span class="n">99</span>;
 
         </main>
     </div>
-    <script src="js/docs.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("main section[id]");
+            const navLinks = document.querySelectorAll("aside nav ul li a");
+
+            const observerOptions = {
+                root: null,
+                rootMargin: "-20% 0px -70% 0px",
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach((link) => {
+                            link.classList.remove('bg-black', 'text-white', 'font-medium');
+                            link.classList.add('text-neutral-600', 'hover:bg-neutral-100');
+                        });
+
+                        const activeLink = document.querySelector(`aside nav ul li a[href="#${entry.target.id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('bg-black', 'text-white', 'font-medium');
+                            activeLink.classList.remove('text-neutral-600', 'hover:bg-neutral-100');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach((section) => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
 </body>
 </html>
