@@ -140,19 +140,45 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div class="bg-white p-10 shadow-sm border border-neutral-100">
                 <h3 class="text-lg tracking-tight mb-2">Object-Oriented</h3>
-                <p class="text-neutral-400 text-sm mb-6">Classes, constructors, methods, and 'this'.</p>
-                <pre class="text-sm font-mono overflow-x-auto"><span class="text-blue-600 font-bold">class</span> Jack {
-    <span class="text-purple-600 font-bold">function</span> <span class="text-yellow-600">init</span>(name){
+                <p class="text-neutral-400 text-sm mb-6">Basic classes, constructors, methods, and 'this'.</p>
+                <pre class="text-sm font-mono overflow-x-auto"><span class="text-blue-600 font-bold">class</span> Calculator {
+    <span class="text-purple-600 font-bold">function</span> <span class="text-yellow-600">init</span>(name) {
         <span class="text-red-500">this</span>.name = name;
+        <span class="text-red-500">this</span>.result = <span class="text-orange-600">0</span>;
     }
 
-    <span class="text-purple-600 font-bold">function</span> <span class="text-blue-600">greet</span>(){
-        <span class="text-purple-600 font-bold">print</span> <span class="text-green-600">"Hello "</span> + <span class="text-red-500">this</span>.name;
+    <span class="text-purple-600 font-bold">function</span> <span class="text-blue-600">add</span>(x, y) {
+        <span class="text-red-500">this</span>.result = x + y;
+        <span class="text-purple-600 font-bold">print</span> <span class="text-green-600">"Result: "</span> + <span class="text-red-500">this</span>.result;
     }
 }
 
-<span class="text-blue-600 font-bold">let</span> jack = Jack(<span class="text-green-600">"Jack"</span>);
-jack.greet();</pre>
+<span class="text-blue-600 font-bold">let</span> calc = Calculator(<span class="text-green-600">"MyCalc"</span>);
+calc.add(<span class="text-orange-600">5</span>, <span class="text-orange-600">3</span>);</pre>
+            </div>
+
+            <div class="bg-white p-10 shadow-sm border border-neutral-100">
+                <h3 class="text-lg tracking-tight mb-2">Inheritance</h3>
+                <p class="text-neutral-400 text-sm mb-6">Class inheritance and method overriding.</p>
+                <pre class="text-sm font-mono overflow-x-auto"><span class="text-blue-600 font-bold">class</span> Language {
+    <span class="text-purple-600 font-bold">function</span> <span class="text-yellow-600">init</span>(name) {
+        <span class="text-red-500">this</span>.name = name;
+    }
+
+    <span class="text-purple-600 font-bold">function</span> <span class="text-blue-600">compile</span>() {
+        <span class="text-purple-600 font-bold">print</span> <span class="text-red-500">this</span>.name + <span class="text-green-600">" compiled"</span>;
+    }
+}
+
+<span class="text-blue-600 font-bold">class</span> Jackal <span class="text-purple-600 font-bold">extends</span> Language {
+    <span class="text-purple-600 font-bold">function</span> <span class="text-blue-600">interpreted</span>() {
+        <span class="text-purple-600 font-bold">print</span> <span class="text-red-500">this</span>.name + <span class="text-green-600">" interpreted"</span>;
+    }
+}
+
+<span class="text-blue-600 font-bold">let</span> jack = Jackal(<span class="text-green-600">"jackal"</span>);
+jack.interpreted();
+jack.compile();</pre>
             </div>
 
             <div class="bg-white p-10 shadow-sm border border-neutral-100">
