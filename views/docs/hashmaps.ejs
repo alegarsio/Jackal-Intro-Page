@@ -1,0 +1,46 @@
+<section id="hashmaps" class="scroll-mt-24 mb-32">
+    <h1>HashMaps</h1>
+    <p class="text-xl text-neutral-600 mb-10">
+        HashMaps (or Dictionaries) are collections of key-value pairs, useful for storing structured data.
+    </p>
+
+    <h3>Basic Usage</h3>
+    <p class="mb-4 text-neutral-600">Create maps using curly braces <code>{}</code> and access values using keys.</p>
+    
+    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-xl shadow-neutral-200/40 bg-white mb-8">
+        <div class="flex items-center h-10 px-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+            </div>
+            <div class="mx-auto text-xs font-mono text-neutral-500 font-medium tracking-wide">map_create.jackal</div>
+        </div>
+        <pre class="!border-none !rounded-none !shadow-none !mb-0 !bg-white !text-neutral-800 p-6 text-[13.5px] leading-7"><code><span class="text-neutral-400 italic">// Create a map</span>
+<span class="text-blue-600 font-bold">let</span> person = {<span class="text-green-600">"name"</span>: <span class="text-green-600">"Jack"</span>, <span class="text-green-600">"age"</span>: <span class="text-orange-600">5</span>};
+
+<span class="text-neutral-400 italic">// Access a value by key</span>
+<span class="text-purple-600 font-bold">print</span> person[<span class="text-green-600">"name"</span>]; <span class="text-neutral-400 italic">// Output: Jack</span></code></pre>
+    </div>
+
+    <h3>Modification</h3>
+    <p class="mb-4 text-neutral-600">HashMaps are mutable. You can update existing keys or add new ones easily.</p>
+
+    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-xl shadow-neutral-200/40 bg-white mb-6">
+        <div class="flex items-center h-10 px-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+            </div>
+            <div class="mx-auto text-xs font-mono text-neutral-500 font-medium tracking-wide">map_modify.jackal</div>
+        </div>
+        <pre class="!border-none !rounded-none !shadow-none !mb-0 !bg-white !text-neutral-800 p-6 text-[13.5px] leading-7"><code><span class="text-neutral-400 italic">// Update existing value</span>
+person[<span class="text-green-600">"age"</span>] = <span class="text-orange-600">6</span>;
+<span class="text-purple-600 font-bold">print</span> person[<span class="text-green-600">"age"</span>]; <span class="text-neutral-400 italic">// Output: 6</span>
+
+<span class="text-neutral-400 italic">// Add new key-value pair</span>
+person[<span class="text-green-600">"color"</span>] = <span class="text-green-600">"Orange"</span>;
+<span class="text-purple-600 font-bold">print</span> person[<span class="text-green-600">"color"</span>]; <span class="text-neutral-400 italic">// Output: Orange</span></code></pre>
+    </div>
+</section>

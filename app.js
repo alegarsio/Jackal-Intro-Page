@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const defaultData = {
-    name: "Jackal Language",
+    name: "Jackal",
     motto: "The open source programming language for all open source scientists",
     description: "Jackal is a dynamic, object-oriented interpreted programming language built from scratch in C. Designed for agility and cleverness, it explores the depths of language implementation.",
     vision: "Built by and for open source scientists and developers who want to learn, contribute, and shape the future of a language collaboratively.",

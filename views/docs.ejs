@@ -65,14 +65,19 @@
                         <li><a href="#hello-world" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Hello World</a></li>
                     </ul>
                 </div>
+                
                 <div>
                     <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Core Concepts</h4>
                     <ul class="space-y-1 ml-0 list-none">
                         <li><a href="#functions" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Functions</a></li>
                         <li><a href="#user-input" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">User Input</a></li>
+                         <li><a href="#lambda" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Lambda</a></li>
+                        <li><a href="#enums" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Enums</a></li>
                         <li><a href="#pattern-matching" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Pattern Matching</a></li>
                     </ul>
                 </div>
+
+                
                 <div>
                     <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Object-Oriented</h4>
                     <ul class="space-y-1 ml-0 list-none">
@@ -85,6 +90,7 @@
                     <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Data Structures</h4>
                     <ul class="space-y-1 ml-0 list-none">
                         <li><a href="#arrays" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Arrays</a></li>
+                        <li><a href="#hashmaps" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">HashMaps</a></li>
                     </ul>
                 </div>
             </nav>
@@ -96,11 +102,16 @@
             <%- include('docs/hello-world') %>
             <%- include('docs/functions') %>
             <%- include('docs/user-input') %>
+            <%- include('docs/lambda') %>
+            <%- include('docs/enums') %>
             <%- include('docs/pattern-matching') %>
+      
             <%- include('docs/classes') %>
             <%- include('docs/inheritance') %>
             <%- include('docs/interfaces') %>
             <%- include('docs/arrays') %>
+            <%- include('docs/hashmaps') %>
+           
 
             <div class="pt-8 mt-16 border-t border-neutral-100 text-neutral-500 text-sm flex justify-between items-center">
                 <p class="mb-0">© <%= new Date().getFullYear() %> Jackal Language.</p>
@@ -112,7 +123,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // --- LOGIKA SIDEBAR RESPONSIVE ---
+           
             const menuToggle = document.getElementById('menu-toggle');
             const menuClose = document.getElementById('menu-close');
             const sidebar = document.getElementById('sidebar');
@@ -122,30 +133,27 @@
             function openSidebar() {
                 sidebar.classList.remove('-translate-x-full');
                 backdrop.classList.remove('hidden');
-                setTimeout(() => backdrop.classList.remove('opacity-0'), 10); // Delay sedikit untuk transisi halus
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10); 
             }
 
             function closeSidebar() {
                 sidebar.classList.add('-translate-x-full');
                 backdrop.classList.add('opacity-0');
-                setTimeout(() => backdrop.classList.add('hidden'), 300); // Tunggu transisi selesai baru hide
+                setTimeout(() => backdrop.classList.add('hidden'), 300); 
             }
 
             menuToggle.addEventListener('click', openSidebar);
             menuClose.addEventListener('click', closeSidebar);
             backdrop.addEventListener('click', closeSidebar);
 
-            // Tutup sidebar otomatis saat link diklik (UX mobile yang baik)
             navLinksItems.forEach(link => {
                 link.addEventListener('click', () => {
-                    if (window.innerWidth < 768) { // 768px adalah breakpoint 'md' Tailwind
+                    if (window.innerWidth < 768) { 
                         closeSidebar();
                     }
                 });
             });
 
-
-            // --- LOGIKA AUTO-HIGHLIGHT (Scroll Spy) ---
             const sections = document.querySelectorAll("main section[id]");
             
             const observerOptions = {
