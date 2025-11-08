@@ -9,8 +9,7 @@ app.set('view engine', 'ejs');
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-// --- DEFAULT DATA (SAFE FALLBACK) ---
-// Data ini WAJIB lengkap strukturnya agar tidak error di EJS
+
 const defaultData = {
     name: "Jackal",
     motto: "The open source programming language for all open source scientists",
@@ -45,15 +44,12 @@ const defaultData = {
     }
 };
 
-// --- FETCH GITHUB DATA (ROBUST MODE) ---
 async function fetchData() {
-    // 1. Mulai dengan clone data default yang pasti aman
     let data = JSON.parse(JSON.stringify(defaultData));
 
     try {
         const headers = { 'User-Agent': 'Jackal-Landing-Page' };
         
-        // 2. Gunakan allSettled agar satu error tidak mematikan semua request
         const results = await Promise.allSettled([
             axios.get('https://api.github.com/repos/alegarsio/Jackal-Projects', { headers, timeout: 3000 }),
             axios.get('https://api.github.com/repos/alegarsio/Jackal-Projects/releases/latest', { headers, timeout: 3000 }),
@@ -62,7 +58,6 @@ async function fetchData() {
 
         const [repoRes, releaseRes, commitRes] = results;
 
-        // 3. Update data HANYA jika request sukses (status === 'fulfilled')
         
         // --- Repo Stats ---
         if (repoRes.status === 'fulfilled') {
@@ -113,10 +108,8 @@ async function fetchData() {
 
     } catch (error) {
         console.error("Critical Error in fetchData:", error.message);
-        // Jika terjadi error fatal, 'data' masih berisi 'defaultData' yang aman.
     }
 
-    // FINAL SAFETY CHECK: Pastikan lastCommit tidak null/undefined sebelum return
     if (!data.lastCommit) {
         data.lastCommit = defaultData.lastCommit;
     }
@@ -129,7 +122,12 @@ app.get('/', async (req, res) => {
     res.render('index', { data: currentData });
 });
 app.get('/docs', (req, res) => {
-    res.render('docs', { data: defaultData }); // Menggunakan defaultData sementara
+    res.render('docs', { data: defaultData });
+});
+
+app.get('/contribute', async (req, res) => {
+    const currentData = await fetchData(); 
+    res.render('contribute', { data: currentData });
 });
 
 if (require.main === module) {

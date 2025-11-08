@@ -24,6 +24,23 @@
 </head>
 <body class="bg-white text-neutral-900 antialiased leading-relaxed">
 
+    <nav class="fixed top-0 w-full z-50 flex items-center justify-between px-6 md:px-24 lg:px-32 h-20 bg-white/90 backdrop-blur-md border-b border-neutral-100">
+        <a href="/" class="text-xl font-bold tracking-tight flex items-center gap-1">
+            <%= data.name %><span class="text-neutral-400">.</span>
+        </a>
+
+        <div class="flex items-center gap-6 md:gap-10 text-sm font-medium">
+            <a href="/docs" class="text-neutral-600 hover:text-black transition-colors">
+                Docs
+            </a>
+            <a href="/contribute" class="text-neutral-600 hover:text-black transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-900 after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">
+                Contribute
+            </a>
+            <a href="<%= data.repoLink %>" target="_blank" class="hidden sm:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-sm hover:bg-neutral-800 transition-colors">
+                GitHub ↗
+            </a>
+        </div>
+    </nav>
     <header class="min-h-[90vh] flex flex-col lg:flex-row items-center justify-between gap-16 px-6 md:px-24 lg:px-32 py-20 lg:py-0">
         
         <div class="flex-1 max-w-3xl">
@@ -91,7 +108,7 @@
         
         <img src="/images/stack.png" 
              alt="Jackal Language Illustration" 
-             class="w-full h-full object-contain rounded-8xl transition-all duration-500" 
+             class="w-full h-full object-contain rounded-2xl transition-all duration-500" 
              style="max-height: 1000px;" 
              loading="lazy"
         >
