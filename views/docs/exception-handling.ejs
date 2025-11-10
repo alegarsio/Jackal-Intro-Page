@@ -1,0 +1,46 @@
+<section id="exception-handling" class="scroll-mt-24 mb-32">
+    <h1>Exception Handling</h1>
+    <p class="text-xl text-neutral-600 mb-10">
+        Handle runtime errors gracefully using <code>try</code>, <code>catch</code>, and <code>throw</code>.
+    </p>
+
+    <h3>Throwing Exceptions</h3>
+    <p class="mb-4 text-neutral-600">Use the <code>throw</code> keyword to raise an error when something goes wrong.</p>
+    
+    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-xl shadow-neutral-200/40 bg-white mb-8">
+        <div class="flex items-center h-10 px-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+            </div>
+            <div class="mx-auto text-xs font-mono text-neutral-500 font-medium tracking-wide">divide.jackal</div>
+        </div>
+        <pre class="!border-none !rounded-none !shadow-none !mb-0 !bg-white !text-neutral-800 p-6 text-[13.5px] leading-7"><code><span class="text-purple-600 font-bold">function</span> <span class="text-blue-600">divide</span>(a, b) {
+    <span class="text-purple-600 font-bold">if</span> (b == <span class="text-orange-600">0</span>) {
+        <span class="text-purple-600 font-bold">throw</span> <span class="text-green-600">"Can't divide by zero"</span>;
+    }
+    <span class="text-purple-600 font-bold">return</span> a / b;
+}</code></pre>
+    </div>
+
+    <h3>Catching Exceptions</h3>
+    <p class="mb-4 text-neutral-600">Wrap potentially risky code in a <code>try</code> block and handle errors in the <code>catch</code> block.</p>
+
+    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-xl shadow-neutral-200/40 bg-white mb-6">
+        <div class="flex items-center h-10 px-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+            </div>
+            <div class="mx-auto text-xs font-mono text-neutral-500 font-medium tracking-wide">main.jackal</div>
+        </div>
+        <pre class="!border-none !rounded-none !shadow-none !mb-0 !bg-white !text-neutral-800 p-6 text-[13.5px] leading-7"><code><span class="text-purple-600 font-bold">try</span> {
+    <span class="text-purple-600 font-bold">print</span> <span class="text-blue-600">divide</span>(<span class="text-orange-600">10</span>, <span class="text-orange-600">0</span>);
+} <span class="text-purple-600 font-bold">catch</span> (e) {
+    <span class="text-purple-600 font-bold">print</span> <span class="text-green-600">"Error: "</span> + e;
+}
+<span class="text-neutral-400 italic">// Output: Error: Can't divide by zero</span></code></pre>
+    </div>
+</section>
