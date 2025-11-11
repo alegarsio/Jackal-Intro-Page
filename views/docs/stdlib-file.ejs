@@ -1,0 +1,48 @@
+<section id="stdlib-file" class="scroll-mt-24 mb-32">
+    <h1>File I/O Operations</h1>
+    <p class="text-xl text-neutral-600 mb-10">
+        Read from and write to the filesystem using Jackal's built-in <code>File</code> class.
+    </p>
+
+    <h3>Writing to a File</h3>
+    <p class="mb-4 text-neutral-600">Open a file handle in write (<code>"w"</code>) mode, write content, and close it.</p>
+    
+    <!-- White Window-like Code Box (Writing) -->
+    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-xl shadow-neutral-200/40 bg-white mb-8">
+        <div class="flex items-center h-10 px-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+            </div>
+            <div class="mx-auto text-xs font-mono text-neutral-500 font-medium tracking-wide">write.jackal</div>
+        </div>
+        <pre class="!border-none !rounded-none !shadow-none !mb-0 !bg-white !text-neutral-800 p-6 text-[13.5px] leading-7"><code><span class="text-neutral-400 italic">// Create a file handle for writing</span>
+<span class="text-blue-600 font-bold">let</span> fileWrite = <span class="text-yellow-600">File</span>(<span class="text-green-600">"data.txt"</span>, <span class="text-green-600">"w"</span>);
+fileWrite.<span class="text-blue-600">write</span>(<span class="text-green-600">"Hello World!"</span>);
+fileWrite.<span class="text-blue-600">close</span>();</code></pre>
+    </div>
+
+    <h3>Reading from a File</h3>
+    <p class="mb-4 text-neutral-600">Open in read (<code>"r"</code>) mode and use <code>.readAll()</code> to get the contents.</p>
+
+    <!-- White Window-like Code Box (Reading) -->
+    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-xl shadow-neutral-200/40 bg-white mb-6">
+        <div class="flex items-center h-10 px-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+                <div class="w-3 h-3 rounded-full bg-neutral-300 border border-neutral-400/30"></div>
+            </div>
+            <div class="mx-auto text-xs font-mono text-neutral-500 font-medium tracking-wide">read.jackal</div>
+        </div>
+        <pre class="!border-none !rounded-none !shadow-none !mb-0 !bg-white !text-neutral-800 p-6 text-[13.5px] leading-7"><code><span class="text-neutral-400 italic">// Create a file handle for reading</span>
+<span class="text-blue-600 font-bold">let</span> fileRead = <span class="text-yellow-600">File</span>(<span class="text-green-600">"data.txt"</span>, <span class="text-green-600">"r"</span>);
+
+<span class="text-neutral-400 italic">// Read all content</span>
+<span class="text-blue-600 font-bold">let</span> content = fileRead.<span class="text-blue-600">readAll</span>();
+<span class="text-purple-600 font-bold">print</span> content; <span class="text-neutral-400 italic">// Output: Hello World!</span>
+
+fileRead.<span class="text-blue-600">close</span>();</code></pre>
+    </div>
+</section>

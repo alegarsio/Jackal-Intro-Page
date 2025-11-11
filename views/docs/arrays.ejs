@@ -28,7 +28,7 @@ list[<span class="text-orange-600">1</span>] = <span class="text-orange-600">99<
         <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-300 hover:shadow-md">
             <button onclick="toggleAccordion('push-content')" class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-neutral-50 transition-colors">
                 <div class="flex items-center gap-3">
-                    <span class="font-mono text-sm font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md border border-blue-100">push(element)</span>
+                    <span class="font-mono text-sm font-bold bg-black text-white px-2 py-1 rounded-md">.push(element)</span>
                     <span class="text-neutral-600 text-sm">Adds an element to the end</span>
                 </div>
                 <svg id="push-icon" class="w-5 h-5 text-neutral-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,7 +47,7 @@ data.<span class="text-blue-600">push</span>(<span class="text-orange-600">20</s
         <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-300 hover:shadow-md">
             <button onclick="toggleAccordion('pop-content')" class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-neutral-50 transition-colors">
                 <div class="flex items-center gap-3">
-                    <span class="font-mono text-sm font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-md border border-purple-100">pop()</span>
+                    <span class="font-mono text-sm font-bold bg-black text-white px-2 py-1 rounded-md">.pop()</span>
                     <span class="text-neutral-600 text-sm">Removes and returns the last element</span>
                 </div>
                 <svg id="pop-icon" class="w-5 h-5 text-neutral-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@ data.<span class="text-blue-600">push</span>(<span class="text-orange-600">20</s
         <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-300 hover:shadow-md">
             <button onclick="toggleAccordion('remove-content')" class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-neutral-50 transition-colors">
                 <div class="flex items-center gap-3">
-                    <span class="font-mono text-sm font-bold text-red-600 bg-red-50 px-2 py-1 rounded-md border border-red-100">remove(index)</span>
+                    <span class="font-mono text-sm font-bold bg-black text-white px-2 py-1 rounded-md">.remove(index)</span>
                     <span class="text-neutral-600 text-sm">Removes element at specific index</span>
                 </div>
                 <svg id="remove-icon" class="w-5 h-5 text-neutral-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,8 +77,81 @@ data.<span class="text-blue-600">push</span>(<span class="text-orange-600">20</s
             <div id="remove-content" class="hidden border-t border-neutral-100">
                 <div class="p-6 bg-neutral-50/50">
                      <pre class="!border !border-neutral-200 !rounded-lg !shadow-sm !mb-0 !bg-white !text-neutral-800 p-5 text-[13px] leading-6"><code><span class="text-blue-600 font-bold">let</span> list = [<span class="text-green-600">"a"</span>, <span class="text-green-600">"b"</span>, <span class="text-green-600">"c"</span>];
-<span class="text-purple-600 font-bold">remove</span>(list, <span class="text-orange-600">1</span>); <span class="text-neutral-400 italic">// Removes "b" at index 1</span>
+list.<span class="text-red-600">remove</span>(<span class="text-orange-600">1</span>); <span class="text-neutral-400 italic">// Removes "b" at index 1</span>
 <span class="text-purple-600 font-bold">print</span> list; <span class="text-neutral-400 italic">// ["a", "c"]</span></code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-300 hover:shadow-md">
+            <button onclick="toggleAccordion('filter-content')" class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-neutral-50 transition-colors">
+                <div class="flex items-center gap-3">
+                    <span class="font-mono text-sm font-bold bg-black text-white px-2 py-1 rounded-md">.filter(callback)</span>
+                    <span class="text-neutral-600 text-sm">Creates new array with filtered elements</span>
+                </div>
+                <svg id="filter-icon" class="w-5 h-5 text-neutral-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div id="filter-content" class="hidden border-t border-neutral-100">
+                <div class="p-6 bg-neutral-50/50">
+                     <pre class="!border !border-neutral-200 !rounded-lg !shadow-sm !mb-0 !bg-white !text-neutral-800 p-5 text-[13px] leading-6"><code><span class="text-purple-600 font-bold">print</span> <span class="text-green-600">"--- Testing .filter() ---"</span>;
+<span class="text-blue-600 font-bold">let</span> numbers = [<span class="text-orange-600">1</span>, <span class="text-orange-600">2</span>, <span class="text-orange-600">3</span>, <span class="text-orange-600">4</span>, <span class="text-orange-600">5</span>, <span class="text-orange-600">6</span>];
+
+<span class="text-blue-600 font-bold">let</span> evens = numbers.<span class="text-blue-600">filter</span>(<span class="text-purple-600 font-bold">function</span>(n) {
+    <span class="text-purple-600 font-bold">return</span> n % <span class="text-orange-600">2</span> == <span class="text-orange-600">0</span>;
+});
+
+<span class="text-purple-600 font-bold">print</span> evens; <span class="text-neutral-400 italic">// Output: [2, 4, 6]</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-300 hover:shadow-md">
+            <button onclick="toggleAccordion('map-content')" class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-neutral-50 transition-colors">
+                <div class="flex items-center gap-3">
+                    <span class="font-mono text-sm font-bold bg-black text-white px-2 py-1 rounded-md">.map(callback)</span>
+                    <span class="text-neutral-600 text-sm">Creates new array by transforming elements</span>
+                </div>
+                <svg id="map-icon" class="w-5 h-5 text-neutral-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div id="map-content" class="hidden border-t border-neutral-100">
+                <div class="p-6 bg-neutral-50/50">
+                     <pre class="!border !border-neutral-200 !rounded-lg !shadow-sm !mb-0 !bg-white !text-neutral-800 p-5 text-[13px] leading-6"><code><span class="text-purple-600 font-bold">print</span> <span class="text-green-600">"--- Testing .map() ---"</span>;
+<span class="text-blue-600 font-bold">let</span> numbers = [<span class="text-orange-600">1</span>, <span class="text-orange-600">2</span>, <span class="text-orange-600">3</span>, <span class="text-orange-600">4</span>];
+
+<span class="text-blue-600 font-bold">let</span> tens = numbers.<span class="text-blue-600">map</span>(<span class="text-purple-600 font-bold">function</span>(n) {
+    <span class="text-purple-600 font-bold">return</span> n * <span class="text-orange-600">10</span>;
+});
+
+<span class="text-purple-600 font-bold">print</span> tens; <span class="text-neutral-400 italic">// Output: [10, 20, 30, 40]</span></code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-300 hover:shadow-md">
+            <button onclick="toggleAccordion('reduce-content')" class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-neutral-50 transition-colors">
+                <div class="flex items-center gap-3">
+                    <span class="font-mono text-sm font-bold bg-black text-white px-2 py-1 rounded-md">.reduce(callback, initial)</span>
+                    <span class="text-neutral-600 text-sm">Reduces array to a single value</span>
+                </div>
+                <svg id="reduce-icon" class="w-5 h-5 text-neutral-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div id="reduce-content" class="hidden border-t border-neutral-100">
+                <div class="p-6 bg-neutral-50/50">
+                     <pre class="!border !border-neutral-200 !rounded-lg !shadow-sm !mb-0 !bg-white !text-neutral-800 p-5 text-[13px] leading-6"><code><span class="text-purple-600 font-bold">print</span> <span class="text-green-600">"--- Testing .reduce() ---"</span>;
+<span class="text-blue-600 font-bold">let</span> numbers = [<span class="text-orange-600">5</span>, <span class="text-orange-600">10</span>, <span class="text-orange-600">20</span>];
+
+<span class="text-neutral-400 italic">// Sum all numbers, starting from 0</span>
+<span class="text-blue-600 font-bold">let</span> total = numbers.<span class="text-blue-600">reduce</span>(<span class="text-purple-600 font-bold">function</span>(previousTotal, currentValue) {
+    <span class="text-purple-600 font-bold">return</span> previousTotal + currentValue;
+}, <span class="text-orange-600">0</span>); <span class="text-neutral-400 italic">// 0 is the initial value</span>
+
+<span class="text-purple-600 font-bold">print</span> total; <span class="text-neutral-400 italic">// Output: 35</span></code></pre>
                 </div>
             </div>
         </div>
@@ -92,7 +165,7 @@ function toggleAccordion(contentId) {
     const icon = document.getElementById(contentId.replace('-content', '-icon'));
     
     if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden'); // Typo 'contentd' fixed here
+        content.classList.remove('hidden');
         icon.classList.add('rotate-180');
     } else {
         content.classList.add('hidden');

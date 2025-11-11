@@ -28,70 +28,93 @@
 </head>
 <body class="bg-white text-neutral-900 antialiased">
 
-    <nav class="flex items-center justify-between px-6 md:px-8 lg:px-12 h-16 border-b border-neutral-200 fixed top-0 w-full bg-white/80 backdrop-blur-md z-50">
-        <div class="flex items-center">
-            <button id="menu-toggle" class="md:hidden mr-4 text-neutral-500 hover:text-black focus:outline-none">
+    <nav class="flex items-center justify-between px-6 md:px-8 lg:px-12 h-20 border-b border-neutral-200 fixed top-0 w-full bg-white/90 backdrop-blur-md z-50">
+        <div class="flex items-center gap-4">
+            <button id="menu-toggle" class="md:hidden text-neutral-500 hover:text-black focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
                 </svg>
             </button>
-            
-            <a href="/" class="font-bold text-xl tracking-tight flex items-center gap-2">
-                <%= data.name %> Docs<span class="text-neutral-300">.</span>
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="/images/stack.png" alt="<%= data.name %> Logo" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                <span class="text-xl font-bold tracking-tight"><%= data.name %> Docs<span class="text-neutral-400">.</span></span>
             </a>
         </div>
-        <a href="/" class="text-sm font-medium text-neutral-500 hover:text-black transition-colors">← Back to Home</a>
+        <div class="flex items-center gap-8 text-sm font-medium">
+            <a href="/contribute" class="text-neutral-600 hover:text-black transition-colors hidden sm:block">Contribute</a>
+            <a href="/" class="bg-black text-white px-5 py-2 hover:bg-neutral-800 transition-colors rounded-sm">← Back to Home</a>
+        </div>
     </nav>
 
-    <div class="flex pt-16 min-h-screen relative">
-        
+    <div class="flex pt-20 min-h-screen relative">
         <div id="sidebar-backdrop" class="fixed inset-0 bg-black/20 z-40 hidden md:hidden backdrop-blur-sm transition-opacity opacity-0"></div>
 
-        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 h-full bg-white border-r border-neutral-200 overflow-y-auto p-6 lg:p-8 transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 md:top-16 md:h-[calc(100vh-4rem)] md:z-0 md:bg-neutral-50/50">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 h-full bg-white border-r border-neutral-200 overflow-y-auto p-6 lg:p-8 transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 md:top-20 md:h-[calc(100vh-5rem)] md:z-0 md:bg-neutral-50/50">
             
             <div class="md:hidden flex justify-end mb-6">
                 <button id="menu-close" class="text-neutral-400 hover:text-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
 
-            <nav class="space-y-8 sticky top-6">
+            <nav class="space-y-4 sticky top-6">
+                
                 <div>
-                    <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Getting Started</h4>
-                    <ul class="space-y-1 ml-0 list-none">
+                    <button class="menu-toggle-btn w-full flex justify-between items-center text-xs uppercase tracking-wider text-neutral-500 font-bold mb-3 hover:text-black transition-colors" data-target="menu-getting-started">
+                        <span>Getting Started</span>
+                        <svg class="w-4 h-4 transition-transform duration-200 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <ul id="menu-getting-started" class="space-y-1 ml-0 list-none pl-3 border-l border-neutral-300">
                         <li><a href="#installation" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Installation</a></li>
                         <li><a href="#hello-world" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Hello World</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
-                    <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Core Concepts</h4>
-                    <ul class="space-y-1 ml-0 list-none">
+                    <button class="menu-toggle-btn w-full flex justify-between items-center text-xs uppercase tracking-wider text-neutral-500 font-bold mb-3 hover:text-black transition-colors" data-target="menu-core-concepts">
+                        <span>Core Concepts</span>
+                        <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <ul id="menu-core-concepts" class="hidden space-y-1 ml-0 list-none pl-3 border-l border-neutral-300">
                         <li><a href="#functions" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Functions</a></li>
-                        <li><a href="#user-input" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">User Input</a></li>
-                         <li><a href="#lambda" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Lambda</a></li>
+                        <li><a href="#lambda" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Lambda & IIFE</a></li>
                         <li><a href="#enums" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Enums</a></li>
                         <li><a href="#exception-handling" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Exception Handling</a></li>
+                        <li><a href="#user-input" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">User Input</a></li>
                         <li><a href="#pattern-matching" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Pattern Matching</a></li>
                     </ul>
                 </div>
 
-                
                 <div>
-                    <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Object-Oriented</h4>
-                    <ul class="space-y-1 ml-0 list-none">
+                    <button class="menu-toggle-btn w-full flex justify-between items-center text-xs uppercase tracking-wider text-neutral-500 font-bold mb-3 hover:text-black transition-colors" data-target="menu-oop">
+                        <span>Object-Oriented</span>
+                        <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <ul id="menu-oop" class="hidden space-y-1 ml-0 list-none pl-3 border-l border-neutral-300">
                         <li><a href="#classes" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Classes & Objects</a></li>
                         <li><a href="#inheritance" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Inheritance</a></li>
                         <li><a href="#interfaces" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Interfaces</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h4 class="text-xs uppercase tracking-wider text-neutral-400 font-bold mb-4">Data Structures</h4>
-                    <ul class="space-y-1 ml-0 list-none">
+                    <button class="menu-toggle-btn w-full flex justify-between items-center text-xs uppercase tracking-wider text-neutral-500 font-bold mb-3 hover:text-black transition-colors" data-target="menu-data-structures">
+                        <span>Data Structures</span>
+                        <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <ul id="menu-data-structures" class="hidden space-y-1 ml-0 list-none pl-3 border-l border-neutral-300">
                         <li><a href="#arrays" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">Arrays</a></li>
                         <li><a href="#hashmaps" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">HashMaps</a></li>
+                    </ul>
+                </div>
+
+                 <div>
+                    <button class="menu-toggle-btn w-full flex justify-between items-center text-xs uppercase tracking-wider text-neutral-500 font-bold mb-3 hover:text-black transition-colors" data-target="menu-stdlib">
+                        <span>Standard Library</span>
+                        <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <ul id="menu-stdlib" class="hidden space-y-1 ml-0 list-none pl-3 border-l border-neutral-300">
+                        <li><a href="#stdlib-file" class="nav-link block text-sm py-1.5 px-3 -ml-3 rounded-md hover:bg-neutral-100 transition-all text-neutral-600">File I/O</a></li>
                     </ul>
                 </div>
             </nav>
@@ -102,19 +125,18 @@
             <%- include('docs/installation') %>
             <%- include('docs/hello-world') %>
             <%- include('docs/functions') %>
-            <%- include('docs/user-input') %>
             <%- include('docs/lambda') %>
             <%- include('docs/enums') %>
             <%- include('docs/exception-handling') %>
+            <%- include('docs/user-input') %>
             <%- include('docs/pattern-matching') %>
-      
             <%- include('docs/classes') %>
             <%- include('docs/inheritance') %>
             <%- include('docs/interfaces') %>
             <%- include('docs/arrays') %>
             <%- include('docs/hashmaps') %>
+            <%- include('docs/stdlib-file') %>
            
-
             <div class="pt-8 mt-16 border-t border-neutral-100 text-neutral-500 text-sm flex justify-between items-center">
                 <p class="mb-0">© <%= new Date().getFullYear() %> Jackal Language.</p>
                 <a href="<%= data.repoLink %>/issues" target="_blank" class="hover:text-black transition-colors flex items-center gap-1">Report an issue ↗</a>
@@ -126,6 +148,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
            
+            // --- 1. LOGIKA SIDEBAR RESPONSIVE (Mobile) ---
             const menuToggle = document.getElementById('menu-toggle');
             const menuClose = document.getElementById('menu-close');
             const sidebar = document.getElementById('sidebar');
@@ -156,6 +179,25 @@
                 });
             });
 
+            // --- 2. LOGIKA SIDEBAR MENU ACCORDION (Baru) ---
+            const menuToggleButtons = document.querySelectorAll('.menu-toggle-btn');
+            
+            menuToggleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-target');
+                    const targetMenu = document.getElementById(targetId);
+                    const targetIcon = button.querySelector('svg');
+                    
+                    if (targetMenu) {
+                        targetMenu.classList.toggle('hidden');
+                    }
+                    if (targetIcon) {
+                        targetIcon.classList.toggle('rotate-180');
+                    }
+                });
+            });
+
+            // --- 3. LOGIKA AUTO-HIGHLIGHT (Scroll Spy) ---
             const sections = document.querySelectorAll("main section[id]");
             
             const observerOptions = {
